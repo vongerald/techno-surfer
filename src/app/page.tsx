@@ -1,276 +1,342 @@
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, BarChart3, Globe, Mail, MessageSquare, TrendingUp } from "lucide-react"
-import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Nav } from "@/components/nav"
-import { Footer } from "@/components/footer"
+import { MarketingBanner } from "./components/marketing-banner"
+import { EbookPromo } from "./components/ebook-promo"
+import { LeadCaptureForm } from "./components/lead-capture-form"
+import { SiteHeader } from "./components/site-header"
+import { SiteFooter } from "./components/site-footer"
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Nav />
-      <main className="flex-1 pt-16">
-        <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-background to-muted relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-          <div className="container px-4 md:px-6 relative">
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14">
-                    <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl"></div>
-                    <div className="relative w-full h-full bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                      <svg
-                        className="w-7 h-7 text-primary-foreground"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                      </svg>
-                    </div>
-                  </div>
-                  <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                    TechnoSurfer
-                  </h1>
-                </div>
-                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-muted-foreground">
-                  Ride the Digital Wave with TechnoSurfer Marketing
+    <div className="flex min-h-screen flex-col">
+      <MarketingBanner />
+      {/* Header */}
+      <SiteHeader />
+
+      <main className="flex-1">
+        {/* Hero Section with TechnoSurfers Image */}
+        <section className="w-full py-12 md:py-16">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Technosurfers%20graphic%20ad1-zPrOmvdURHJPTqY5877ybdTLCtsoE8.png"
+                alt="TechnoSurfers Digital Marketing"
+                width={800}
+                height={1200}
+                className="rounded-lg shadow-xl mb-8"
+                priority
+              />
+
+              <div className="mt-8 text-center" id="free-marketing">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Ready to Boost Your Online Presence?
                 </h2>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                  Our comprehensive digital marketing solutions help businesses grow their online presence, increase traffic, and convert more customers.
+                <p className="mx-auto mt-4 max-w-[700px] text-muted-foreground md:text-xl">
+                  We're offering our complete digital marketing services FREE for 3 months to the first 5 businesses
+                  that qualify.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                    <Link href="/services">Explore Services</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild className="border-primary text-primary hover:bg-primary/10 text-lg px-8">
-                    <Link href="/contact">Contact Us</Link>
-                  </Button>
-                </div>
-              </div>
-              <div className="mx-auto lg:ml-auto relative">
-                <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-2xl"></div>
-                <div className="relative rounded-2xl overflow-hidden border border-primary/20">
-                  <img
-                    alt="Digital Marketing Dashboard"
-                    className="w-full h-auto object-cover aspect-video"
-                    height="310"
-                    src="/placeholder.svg?height=310&width=550"
-                    width="550"
-                  />
-                </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="w-full py-16 md:py-24 lg:py-32">
+
+        {/* Lead Capture and Ebook Promo Section */}
+        <section className="w-full py-12 md:py-16 bg-muted/50">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center max-w-3xl mx-auto">
-              <div className="inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-                Our Services
+            <div className="grid gap-8 md:grid-cols-2">
+              <LeadCaptureForm />
+              <div className="flex flex-col justify-center">
+                <EbookPromo />
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                Digital Marketing Solutions
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground">
-                Choose from our comprehensive range of digital marketing services to grow your business online.
-              </p>
             </div>
-            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
-              <Card className="tech-card group">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Globe className="h-6 w-6 text-primary" />
+          </div>
+        </section>
+
+        {/* Featured Services */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Our Digital Marketing Services</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Comprehensive solutions to help your business thrive in the digital landscape
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
+              <Card className="transition-all hover:shadow-lg">
+                <CardHeader className="pb-2">
+                  <div className="mb-2 w-fit rounded-md bg-primary/10 p-2">
+                    <TrendingUp className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">SEO Optimization</CardTitle>
+                  <CardTitle>SEO Optimization</CardTitle>
+                  <CardDescription>Improve your search engine rankings and drive organic traffic</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="min-h-[80px] text-base">
-                    Improve your website's visibility in search engines and drive organic traffic with our expert SEO
-                    services.
-                  </CardDescription>
+                <CardContent className="pb-2">
+                  <p className="text-sm text-muted-foreground">
+                    Our SEO experts will optimize your website to rank higher in search results, bringing more qualified
+                    traffic to your business.
+                  </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="ghost" className="w-full group">
+                  <Button asChild variant="ghost" className="w-full">
                     <Link href="/services/seo">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>
               </Card>
-              <Card className="tech-card">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-primary/10">
+              <Card className="transition-all hover:shadow-lg">
+                <CardHeader className="pb-2">
+                  <div className="mb-2 w-fit rounded-md bg-primary/10 p-2">
                     <BarChart3 className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>PPC Advertising</CardTitle>
+                  <CardDescription>Drive targeted traffic and increase conversions</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="min-h-[80px]">
-                    Drive targeted traffic and generate leads with our strategic pay-per-click advertising campaigns.
-                  </CardDescription>
+                <CardContent className="pb-2">
+                  <p className="text-sm text-muted-foreground">
+                    Our PPC campaigns are designed to maximize ROI, targeting the right audience at the right time to
+                    drive conversions.
+                  </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="ghost" className="w-full group">
+                  <Button asChild variant="ghost" className="w-full">
                     <Link href="/services/ppc">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>
               </Card>
-              <Card className="tech-card">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-primary/10">
+              <Card className="transition-all hover:shadow-lg">
+                <CardHeader className="pb-2">
+                  <div className="mb-2 w-fit rounded-md bg-primary/10 p-2">
                     <MessageSquare className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Social Media</CardTitle>
+                  <CardTitle>Social Media Marketing</CardTitle>
+                  <CardDescription>Build brand awareness and engage with your audience</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="min-h-[80px]">
-                    Build your brand presence and engage with your audience through effective social media marketing.
-                  </CardDescription>
+                <CardContent className="pb-2">
+                  <p className="text-sm text-muted-foreground">
+                    We create and manage social media campaigns that connect with your audience and build brand loyalty.
+                  </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="ghost" className="w-full group">
+                  <Button asChild variant="ghost" className="w-full">
                     <Link href="/services/social-media">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>
               </Card>
-              <Card className="tech-card">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-primary/10">
+              <Card className="transition-all hover:shadow-lg">
+                <CardHeader className="pb-2">
+                  <div className="mb-2 w-fit rounded-md bg-primary/10 p-2">
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>Email Marketing</CardTitle>
+                  <CardDescription>Nurture leads and drive repeat business</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="min-h-[80px]">
-                    Nurture leads and drive conversions with personalized email campaigns that deliver results.
-                  </CardDescription>
+                <CardContent className="pb-2">
+                  <p className="text-sm text-muted-foreground">
+                    Our email marketing strategies help you stay connected with your audience and drive conversions
+                    through personalized campaigns.
+                  </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="ghost" className="w-full group">
+                  <Button asChild variant="ghost" className="w-full">
                     <Link href="/services/email-marketing">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>
               </Card>
-              <Card className="tech-card">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <TrendingUp className="h-6 w-6 text-primary" />
+              <Card className="transition-all hover:shadow-lg">
+                <CardHeader className="pb-2">
+                  <div className="mb-2 w-fit rounded-md bg-primary/10 p-2">
+                    <Globe className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>Content Marketing</CardTitle>
+                  <CardDescription>Engage your audience with valuable content</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="min-h-[80px]">
-                    Engage your audience with high-quality content that builds authority and drives organic growth.
-                  </CardDescription>
+                <CardContent className="pb-2">
+                  <p className="text-sm text-muted-foreground">
+                    We create high-quality content that resonates with your audience and establishes your brand as an
+                    industry authority.
+                  </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="ghost" className="w-full group">
+                  <Button asChild variant="ghost" className="w-full">
                     <Link href="/services/content-marketing">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>
               </Card>
-              <Card className="tech-card">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-primary/10">
+              <Card className="transition-all hover:shadow-lg">
+                <CardHeader className="pb-2">
+                  <div className="mb-2 w-fit rounded-md bg-primary/10 p-2">
                     <BarChart3 className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>Analytics & Reporting</CardTitle>
+                  <CardDescription>Track performance and optimize campaigns</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="min-h-[80px]">
-                    Gain valuable insights into your marketing performance with comprehensive analytics and reporting.
-                  </CardDescription>
+                <CardContent className="pb-2">
+                  <p className="text-sm text-muted-foreground">
+                    Our detailed analytics and reporting help you understand what's working and where to improve for
+                    better results.
+                  </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="ghost" className="w-full group">
+                  <Button asChild variant="ghost" className="w-full">
                     <Link href="/services/analytics">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>
               </Card>
             </div>
-          </div>
-        </section>
-        <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-muted to-background relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-          <div className="container px-4 md:px-6 relative">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                Why Choose Us
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground">
-                We deliver results-driven digital marketing solutions tailored to your business needs.
-              </p>
-            </div>
-            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
-              <div className="tech-card flex flex-col items-center space-y-4 p-8 group">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <TrendingUp className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold">Data-Driven Approach</h3>
-                <p className="text-center text-muted-foreground text-lg">
-                  We use analytics and insights to optimize your campaigns for maximum ROI.
-                </p>
-              </div>
-              <div className="tech-card flex flex-col items-center space-y-4 p-8 group">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Globe className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold">Industry Expertise</h3>
-                <p className="text-center text-muted-foreground text-lg">
-                  Our team has years of experience across various industries and platforms.
-                </p>
-              </div>
-              <div className="tech-card flex flex-col items-center space-y-4 p-8 group">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <MessageSquare className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold">Dedicated Support</h3>
-                <p className="text-center text-muted-foreground text-lg">
-                  We provide ongoing support and regular updates to ensure your success.
-                </p>
-              </div>
+            <div className="flex justify-center">
+              <Button asChild size="lg">
+                <Link href="/services">View All Services</Link>
+              </Button>
             </div>
           </div>
         </section>
-        <section className="w-full py-16 md:py-24 lg:py-32">
+
+        {/* Testimonials */}
+        {/* <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                Ready to Grow Your Business?
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground">
-                Get in touch with our team to discuss your digital marketing needs and how we can help you achieve
-                your goals.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                  <Link href="/contact">Get Started Today</Link>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">What Our Clients Say</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Don't just take our word for it. Here's what our clients have to say about our digital marketing
+                  services.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
+              <Card className="border-0 bg-background shadow-md">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <img
+                      alt="Client"
+                      className="rounded-full"
+                      height="40"
+                      src="/placeholder.svg?height=40&width=40"
+                      style={{
+                        aspectRatio: "40/40",
+                        objectFit: "cover",
+                      }}
+                      width="40"
+                    />
+                    <div>
+                      <CardTitle className="text-base">Sarah Johnson</CardTitle>
+                      <CardDescription>CEO, TechStart</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    "The SEO optimization services provided by TechnoSurfer have transformed our online presence. Our
+                    organic traffic has increased by 150% in just three months!"
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-0 bg-background shadow-md">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <img
+                      alt="Client"
+                      className="rounded-full"
+                      height="40"
+                      src="/placeholder.svg?height=40&width=40"
+                      style={{
+                        aspectRatio: "40/40",
+                        objectFit: "cover",
+                      }}
+                      width="40"
+                    />
+                    <div>
+                      <CardTitle className="text-base">Michael Chen</CardTitle>
+                      <CardDescription>Marketing Director, GrowthBrand</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    "Their PPC campaigns delivered an ROI of 300%. The team is responsive, strategic, and truly
+                    understands our business goals. Highly recommended!"
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-0 bg-background shadow-md">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <img
+                      alt="Client"
+                      className="rounded-full"
+                      height="40"
+                      src="/placeholder.svg?height=40&width=40"
+                      style={{
+                        aspectRatio: "40/40",
+                        objectFit: "cover",
+                      }}
+                      width="40"
+                    />
+                    <div>
+                      <CardTitle className="text-base">Emily Rodriguez</CardTitle>
+                      <CardDescription>Owner, StyleBoutique</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    "The social media strategy developed by TechnoSurfer has helped us connect with our audience in
+                    meaningful ways. Our engagement rates have never been higher!"
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section> */}
+
+        {/* CTA Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Ready to Grow Your Business?</h2>
+                <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Get started with our digital marketing services today and see the difference.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Button asChild size="lg" variant="secondary">
+                  <Link href="#free-marketing">Get a Free Consultation</Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild className="border-primary text-primary hover:bg-primary/10 text-lg px-8">
-                  <Link href="/services">View All Services</Link>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/pricing">View Pricing</Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <Footer />
+
+      {/* Footer */}
+      <SiteFooter />
     </div>
   )
 }
